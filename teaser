@@ -1,0 +1,30 @@
+#!/bin/bash
+
+function usage {
+echo "description"
+}
+
+if [ "$1" == "-h" ] || [ "$1" == "-help" ]; then
+    usage #write usage function#
+fi
+#OPERATORS=()
+
+if [ "$1" == "arith" ]; then
+#SELECTEDOPERATOR=${OPERATORS[$RANDOM % ${#operators[@]} ]}
+
+    if [[ "$2" =~ [0-9] ]] && [[ "$3" =~ [0-9] ]]; then
+        FIRSTNUMBER=$(( ( RANDOM % $((10**${2})) ) ))
+        SECONDNUMBER=$(( ( RANDOM % $((10**${3})) ) ))
+        echo "${FIRSTNUMBER} * ${SECONDNUMBER}"
+
+    else echo "please enter the number of digits for each operand"
+    fi
+
+    read ANSWER
+    while [ $ANSWER -ne $((${FIRSTNUMBER} * ${SECONDNUMBER})) ]; do
+        echo "incorrect, try again"
+        read ANSWER
+    done
+    echo "Good job!"
+#echo "$(( ( RANDOM % ${FIRSTNUMBER} ) )) * $(( ( RANDOM % ${SECONDNUMBER} ) ))"
+fi

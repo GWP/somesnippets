@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function usage {
+    echo "does something"
+}
+
+if [ -z "$1" ]; then
+    NEWFILE="newfile"
+else
+    NEWFILE="$1"
+fi
+
+touch ${NEWFILE}.sh
+echo "#!/bin/bash
+
+if [ \"$1\" == \"-h\" || \"$1\" == \"-help\" ]; then
+    usage #write usage function#
+
+" >> ${NEWFILE}.sh
+vim ${NEWFILE}.sh
+exit 1
